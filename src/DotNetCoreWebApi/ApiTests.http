@@ -1,0 +1,29 @@
+GET http://localhost:5001/api/measurement 
+
+###
+
+GET http://localhost:5001/api/measurement/1
+
+###
+
+GET http://localhost:5001/api/measurement/2
+
+###
+
+GET http://localhost:5001/api/measurement/3
+
+###
+DELETE http://localhost:5001/api/measurement/10
+
+###
+
+POST http://localhost:5001/api/measurement/
+content-type: application/json
+
+{
+  "name": "Measurement_999",
+  "value": 0.15,
+  "createdBy": "Operator 2",
+  "createdAt": "2019-04-09T00:01:00"
+}
+
