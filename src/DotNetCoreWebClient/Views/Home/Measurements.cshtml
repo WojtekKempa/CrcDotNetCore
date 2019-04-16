@@ -1,7 +1,52 @@
-﻿
-@{
+﻿@{
     ViewData["Title"] = "Measurements";
 }
 
 <h1>Measurements</h1>
 
+<div class="form-group">
+    <div class="form-group">
+        <label for="valueInput">Name</label>
+        <input type="number" class="form-control" id="measurement_nameInput" placeholder="Enter name" />
+        <label for="valueInput">Value</label>
+        <input type="number" class="form-control" id="measurement_valueInput" placeholder="Enter value" />
+    </div>
+    <button id="measurement_addBtn" type="button" class="btn btn-primary">Add</button>
+</div>
+
+<div class="container">
+    <div class="row bg-light">
+        <div class="col-sm">
+            Id
+        </div>
+        <div class="col-sm">
+            Name
+        </div>
+        <div class="col-sm">
+            Value
+        </div>
+        <div class="col-sm">
+            Created By
+        </div>
+        <div class="col-sm">
+            <!-- Empty column for remove button -->
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm">
+            First column
+        </div>
+        <div class="col-sm">
+            Second column
+        </div>
+        <div class="col-sm">
+            Third column
+        </div>
+        <div class="col-sm">
+            Fourth column
+        </div>
+        <div class="col-sm">
+            <a href="#">Remove</a>
+        </div>
+    </div>
+</div>
