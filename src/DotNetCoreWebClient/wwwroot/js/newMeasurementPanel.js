@@ -12,8 +12,8 @@
     _initAddBtn() {
         let addBtn = document.getElementById('measurement_addBtn')
         addBtn.addEventListener('click', e => {
-            let nameInput = document.getElementById('measurement_nameInput')
-            let valueInput = document.getElementById('measurement_valueInput')
+            let nameInput = document.querySelector('#measurement_nameInput')
+            let valueInput = document.querySelector('#measurement_valueInput')
             this._raiseNewMeasurementEvent({
                 name: nameInput.value,
                 value: valueInput.value
