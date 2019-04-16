@@ -22,8 +22,8 @@
     }
 
     _raiseNewMeasurementEvent(e) {
-        for (let i in this._listeners) {
-            this._listeners[i].newMeasurementAdded(e)
-        }
+        this._listeners.forEach(l => {
+            l.newMeasurementAdded(e)
+        })
     }
 }
