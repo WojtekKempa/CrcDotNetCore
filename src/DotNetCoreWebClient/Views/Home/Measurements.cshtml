@@ -16,7 +16,7 @@
 <script src="~/js/newMeasurementPanel.js" asp-append-version="true"></script>
 
 <div id="measurement_container" class="container">
-    <div class="row bg-light">
+    <div class="row bg-light" data-row-type="header">
         <div class="col-sm">
             Id
         </div>
@@ -33,7 +33,24 @@
             <!-- Empty column for remove button -->
         </div>
     </div>
-    <div class="row">
+    <div class="row d-none" data-row-type="template">
+        <div class="col-sm">
+            First column
+        </div>
+        <div class="col-sm">
+            Second column
+        </div>
+        <div class="col-sm">
+            Third column
+        </div>
+        <div class="col-sm">
+            Fourth column
+        </div>
+        <div class="col-sm">
+            <a href="#" data-action="remove">Remove</a>
+        </div>
+    </div>
+    <div class="row" data-row-type="data">
         <div class="col-sm">
             First column
         </div>
