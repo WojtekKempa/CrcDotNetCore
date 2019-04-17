@@ -1,7 +1,7 @@
 ﻿class NewMeasurementPanel {
     _listeners = []
 
-    initialize() {
+    constructor() {
         this._initAddBtn()
     }
 
