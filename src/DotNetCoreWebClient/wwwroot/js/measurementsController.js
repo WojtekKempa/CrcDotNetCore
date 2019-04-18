@@ -17,6 +17,4 @@
     }
 }
 
-(function () {
-    new MeasurementsController()
-})()
+(() => new MeasurementsController())()
