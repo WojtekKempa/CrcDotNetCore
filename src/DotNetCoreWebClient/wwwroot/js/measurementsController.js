@@ -10,6 +10,12 @@
                 _this._newMeasurementPanel_newMeasurementAdded(e)
             }
         })
+
+        this._measurementListPanel.addEventListener(new class {
+            measurementEditing(e) {
+                
+            }
+        })
     }
 
     _newMeasurementPanel_newMeasurementAdded(e) {
