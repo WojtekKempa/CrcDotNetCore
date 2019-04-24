@@ -34,6 +34,9 @@
                 name: nameInput.value,
                 value: valueInput.value
             })
+
+            nameInput.value = ""
+            valueInput.value = ""
         })
 
         let saveBtn = document.querySelector('#measurement_saveBtn')
