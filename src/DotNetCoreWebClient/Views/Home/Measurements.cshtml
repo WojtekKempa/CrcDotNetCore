@@ -1,4 +1,7 @@
-﻿@{
+﻿@using Microsoft.Extensions.Configuration
+@inject IConfiguration Configuration
+
+@{
     ViewData["Title"] = "Measurements";
 }
 
@@ -61,3 +64,6 @@
 </div>
 <script src="~/js/measurementListPanel.js" asp-append-version="true"></script>
 <script src="~/js/measurementsController.js" asp-append-version="true"></script>
+<script>
+    (() => new MeasurementsController({ serviceUrl: '@Configuration.GetSection("AppSettings")["ServiceUrl"]'}))()
+</script>

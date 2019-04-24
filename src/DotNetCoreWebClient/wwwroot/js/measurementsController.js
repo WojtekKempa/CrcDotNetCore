@@ -1,7 +1,9 @@
 ﻿class MeasurementsController {
+    _serviceUrl = ''
     _editedRowId = -1
 
-    constructor() {
+    constructor(args) {
+        this._serviceUrl = args.serviceUrl
         this._newMeasurementPanel = new NewMeasurementPanel()
         this._measurementListPanel = new MeasurementListPanel()
 
@@ -39,5 +41,3 @@
         this._measurementListPanel.addNewMeasurement(e)
     }
 }
-
-(() => new MeasurementsController())()
