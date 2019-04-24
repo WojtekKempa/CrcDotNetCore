@@ -12,8 +12,8 @@
         <input type="number" class="form-control" id="measurement_valueInput" placeholder="Enter value" />
     </div>
     <button id="measurement_addBtn" type="button" class="btn btn-primary">Add</button>
-    <button id="measurement_saveBtn" type="button" class="btn btn-primary">Save</button>
-    <button id="measurement_cancelBtn" type="button" class="btn btn-primary">Cancel</button>
+    <button id="measurement_saveBtn" type="button" class="btn btn-primary d-none">Save</button>
+    <button id="measurement_cancelBtn" type="button" class="btn btn-primary d-none">Cancel</button>
 </div>
 <script src="~/js/newMeasurementPanel.js" asp-append-version="true"></script>
 
@@ -38,10 +38,7 @@
             <!-- Empty column for remove button -->
         </div>
     </div>
-    <div class="row d-none" data-row-type="template">
-        <div class="col-sm d-none" data-column-type="internalId">
-
-        </div>
+    <div class="row d-none" data-row-type="template" data-internal-id="">
         <div class="col-sm" data-column-type="id">
 
         </div>
