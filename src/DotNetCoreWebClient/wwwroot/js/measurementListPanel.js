@@ -1,5 +1,6 @@
 ﻿class MeasurementListPanel {
     _listeners = []
+    _counter = 0
 
     addNewMeasurement(measurement) {
         let grid = document.querySelector('#measurement_container')
@@ -8,6 +9,8 @@
         let nameColumn = newRow.querySelector('div[data-column-type=\'name\']')
         let valueColumn = newRow.querySelector('div[data-column-type=\'value\']')
 
+        newRow.dataset['rowType'] = 'data'
+        newRow.dataset['internalId'] = this._counter++
         nameColumn.innerText = measurement.name
         valueColumn.innerText = measurement.value
 
@@ -21,9 +24,32 @@
             removeAnchor.parentElement.parentElement.remove()
         })
 
+        let editAnchor = newRow.querySelector('a[data-action=\'edit\']')
+        editAnchor.addEventListener('click', e => {
+            let row = editAnchor.parentElement.parentElement
+            let nameColumn = row.querySelector('div[data-column-type=\'name\']')
+            let valueColumn = row.querySelector('div[data-column-type=\'value\']')
+
+            this._raiseMeasurementEditingEvent({
+                internalId: row.dataset['internalId'],
+                name: nameColumn.innerText,
+                value: valueColumn.innerText
+            })
+        })
+
         newRow.classList.remove('d-none')
 
         grid.appendChild(newRow)
+    }
+
+    editMeasurement(measurement) {
+        let grid = document.querySelector('#measurement_container')
+        let row = grid.querySelector('div[data-internal-id=\'' + measurement.internalId + '\']')
+        let nameColumn = row.querySelector('div[data-column-type=\'name\']')
+        let valueColumn = row.querySelector('div[data-column-type=\'value\']')
+
+        nameColumn.innerHTML = measurement.name
+        valueColumn.innerHTML = measurement.value
     }
 
     addEventListener(listener) {
@@ -33,6 +59,12 @@
     _raiseMeasurementRemovedEvent(e) {
         this._listeners.forEach(i => {
             i.measurementRemoved(e)
+        })
+    }
+
+    _raiseMeasurementEditingEvent(e) {
+        this._listeners.forEach(i => {
+            i.measurementEditing(e)
         })
     }
 }
