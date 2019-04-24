@@ -28,6 +28,10 @@
                 _this._editedRowId = e.internalId
                 _this._newMeasurementPanel.editMeasurement(e)
             }
+
+            measurementRemoved(e) {
+
+            }
         })
     }
 
