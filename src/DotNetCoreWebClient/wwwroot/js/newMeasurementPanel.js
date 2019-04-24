@@ -2,7 +2,7 @@
     _listeners = []
 
     constructor() {
-        this._initAddBtn()
+        this._initButtons()
     }
 
     addEventListener(listener) {
@@ -25,7 +25,7 @@
         cancelBtn.classList.remove('d-none')        
     }
 
-    _initAddBtn() {
+    _initButtons() {
         let addBtn = document.getElementById('measurement_addBtn')
         addBtn.addEventListener('click', e => {
             let nameInput = document.querySelector('#measurement_nameInput')
