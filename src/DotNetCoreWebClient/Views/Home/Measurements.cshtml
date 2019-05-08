@@ -63,6 +63,7 @@
     </div>
 </div>
 <script src="~/js/measurementListPanel.js" asp-append-version="true"></script>
+<script src="~/js/measurementService.js" asp-append-version="true"></script>
 <script src="~/js/measurementsController.js" asp-append-version="true"></script>
 <script>
     (() => new MeasurementsController({ serviceUrl: '@Configuration.GetSection("AppSettings")["ServiceUrl"]'}))()

@@ -1,9 +1,11 @@
 ﻿class MeasurementsController {
+    _service = null
     _serviceUrl = ''
     _editedRowId = -1
 
     constructor(args) {
         this._serviceUrl = args.serviceUrl
+        this._service = new MeasurementService('http://localhost:61646/')
         this._newMeasurementPanel = new NewMeasurementPanel()
         this._measurementListPanel = new MeasurementListPanel()
 
@@ -35,6 +37,19 @@
 
             }
         })
+
+        this._service.addEventListener(new class {
+            getResponseReady(e) {
+                JSON.parse(e.data).forEach(i => {
+                    _this._measurementListPanel.addNewMeasurement({
+                        name: i.name,
+                        value: i.value
+                    })
+                })
+            }
+        })
+
+        this._service.get()
     }
 
     _newMeasurementPanel_newMeasurementAdded(e) {
