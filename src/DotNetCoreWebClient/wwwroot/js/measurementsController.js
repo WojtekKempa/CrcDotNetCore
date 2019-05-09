@@ -39,7 +39,7 @@
             }
 
             measurementRemoved(e) {
-
+                _this._service.delete(e.id)
             }
         })
 
@@ -57,6 +57,10 @@
 
             postResponseReady(e) {
                 _this._measurementListPanel.addNewMeasurement(JSON.parse(e.data))
+            }
+
+            deleteResponseReady(e) {
+
             }
         })
 
