@@ -13,7 +13,12 @@
 
         this._newMeasurementPanel.addEventListener(new class {
             newMeasurementAdded(e) {
-                _this._newMeasurementPanel_newMeasurementAdded(e)
+                let data = {}
+                data.name = e.name
+                data.value = e.value
+                data.createdBy = 'Operator'
+                data.createdAt = '2019-04-15T09:11:40.019'
+                _this._service.post(data)                
             }
 
             measurementModified(e) {
@@ -42,17 +47,19 @@
             getResponseReady(e) {
                 JSON.parse(e.data).forEach(i => {
                     _this._measurementListPanel.addNewMeasurement({
+                        id: i.id,
                         name: i.name,
-                        value: i.value
+                        value: i.value,
+                        createdBy: i.createdBy
                     })
                 })
+            }
+
+            postResponseReady(e) {
+                _this._measurementListPanel.addNewMeasurement(JSON.parse(e.data))
             }
         })
 
         this._service.get()
-    }
-
-    _newMeasurementPanel_newMeasurementAdded(e) {
-        this._measurementListPanel.addNewMeasurement(e)
     }
 }

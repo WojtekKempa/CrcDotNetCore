@@ -24,9 +24,30 @@
         req.send()
     }
 
+    post(data) {
+        let req = new XMLHttpRequest()
+        req.onreadystatechange = e => {
+            if (req.readyState == 4 && req.status == 201) {
+                this._raisePostResponseReady({
+                    data: req.response
+                })
+            }
+        }
+
+        req.open('POST', this._serviceUrl)
+        req.setRequestHeader("Content-Type", "application/json")
+        req.send(JSON.stringify(data))
+    }
+
     _raiseGetResponseReady(e) {
         this._listeners.forEach(l => {
             l.getResponseReady(e)
+        })
+    }
+
+    _raisePostResponseReady(e) {
+        this._listeners.forEach(l => {
+            l.postResponseReady(e)
         })
     }
 }
