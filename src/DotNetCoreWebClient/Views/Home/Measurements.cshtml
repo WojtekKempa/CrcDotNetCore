@@ -1,4 +1,7 @@
-﻿@{
+﻿@using Microsoft.Extensions.Configuration
+@inject IConfiguration Configuration
+
+@{
     ViewData["Title"] = "Measurements";
 }
 
@@ -31,6 +34,9 @@
         <div class="col-sm">
             Created By
         </div>
+        <div class="col-sm d-none">
+            Created At
+        </div>
         <div class="col-sm">
             <!-- Empty column for edit button -->
         </div>
@@ -51,6 +57,9 @@
         <div class="col-sm" data-column-type="createdBy">
 
         </div>
+        <div class="col-sm d-none" data-column-type="createdAt">
+
+        </div>
         <div class="col-sm">
             <a href="#" data-action="edit">Edit</a>
         </div>
@@ -60,4 +69,8 @@
     </div>
 </div>
 <script src="~/js/measurementListPanel.js" asp-append-version="true"></script>
+<script src="~/js/measurementService.js" asp-append-version="true"></script>
 <script src="~/js/measurementsController.js" asp-append-version="true"></script>
+<script>
+    (() => new MeasurementsController({ serviceUrl: '@Configuration.GetSection("AppSettings")["ServiceUrl"]'}))()
+</script>
