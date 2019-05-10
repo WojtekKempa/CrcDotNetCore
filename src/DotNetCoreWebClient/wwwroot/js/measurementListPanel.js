@@ -32,11 +32,13 @@
         let editAnchor = newRow.querySelector('a[data-action=\'edit\']')
         editAnchor.addEventListener('click', e => {
             let row = editAnchor.parentElement.parentElement
+            let idColumn = row.querySelector('div[data-column-type=\'id\']')
             let nameColumn = row.querySelector('div[data-column-type=\'name\']')
             let valueColumn = row.querySelector('div[data-column-type=\'value\']')
 
             this._raiseMeasurementEditingEvent({
                 internalId: row.dataset['internalId'],
+                id: idColumn.innerText,
                 name: nameColumn.innerText,
                 value: valueColumn.innerText
             })
@@ -55,6 +57,22 @@
 
         nameColumn.innerHTML = measurement.name
         valueColumn.innerHTML = measurement.value
+    }
+
+    getMeasurement(internalId) {
+        let grid = document.querySelector('#measurement_container')
+        let row = grid.querySelector('div[data-internal-id=\'' + internalId + '\']')
+        let idColumn = row.querySelector('div[data-column-type=\'id\']')
+        let nameColumn = row.querySelector('div[data-column-type=\'name\']')
+        let valueColumn = row.querySelector('div[data-column-type=\'value\']')
+        let createdByColumn = row.querySelector('div[data-column-type=\'createdBy\']')
+
+        return {
+            id: idColumn.innerHTML,
+            name: nameColumn.innerHTML,
+            value: valueColumn.innerHTML,
+            createdBy: createdByColumn.innerHTML
+        }        
     }
 
     addEventListener(listener) {

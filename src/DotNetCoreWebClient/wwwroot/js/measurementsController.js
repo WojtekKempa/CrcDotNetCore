@@ -1,6 +1,7 @@
 ﻿class MeasurementsController {
     _service = null
     _serviceUrl = ''
+    _editedRowInternalId = -1
     _editedRowId = -1
 
     constructor(args) {
@@ -17,24 +18,28 @@
                 data.name = e.name
                 data.value = e.value
                 data.createdBy = 'Operator'
-                data.createdAt = '2019-04-15T09:11:40.019'
+                data.createdAt = '2019-05-10T10:02:43.288Z'
                 _this._service.post(data)                
             }
 
             measurementModified(e) {
-                e.internalId = _this._editedRowId
+                e.internalId = _this._editedRowInternalId
                 _this._measurementListPanel.editMeasurement(e)
+                _this._service.put(_this._editedRowId, _this._measurementListPanel.getMeasurement(_this._editedRowInternalId))
+                _this._editedRowInternalId = -1
                 _this._editedRowId = -1
             }
 
             editingCanceled(e) {
+                _this._editedRowInternalId = -1
                 _this._editedRowId = -1
             }
         })
 
         this._measurementListPanel.addEventListener(new class {
             measurementEditing(e) {
-                _this._editedRowId = e.internalId
+                _this._editedRowId = e.id
+                _this._editedRowInternalId = e.internalId
                 _this._newMeasurementPanel.editMeasurement(e)
             }
 
@@ -50,7 +55,8 @@
                         id: i.id,
                         name: i.name,
                         value: i.value,
-                        createdBy: i.createdBy
+                        createdBy: i.createdBy,
+                        createdAt: '2019-04-15T09:11:40.019'
                     })
                 })
             }
@@ -60,6 +66,10 @@
             }
 
             deleteResponseReady(e) {
+
+            }
+
+            putResponseReady(e) {
 
             }
         })
