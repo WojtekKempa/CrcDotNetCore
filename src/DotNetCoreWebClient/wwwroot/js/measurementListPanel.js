@@ -10,6 +10,7 @@
         let nameColumn = newRow.querySelector('div[data-column-type=\'name\']')
         let valueColumn = newRow.querySelector('div[data-column-type=\'value\']')
         let createdByColumn = newRow.querySelector('div[data-column-type=\'createdBy\']')
+        let createdAtColumn = newRow.querySelector('div[data-column-type=\'createdAt\']')
 
         newRow.dataset['rowType'] = 'data'
         newRow.dataset['internalId'] = this._counter++
@@ -18,6 +19,7 @@
         nameColumn.innerText = measurement.name
         valueColumn.innerText = measurement.value
         createdByColumn.innerText = measurement.createdBy
+        createdAtColumn.innerText = measurement.createdAt
 
         let removeAnchor = newRow.querySelector('a[data-action=\'remove\']')
         removeAnchor.addEventListener('click', e => {            
@@ -66,12 +68,14 @@
         let nameColumn = row.querySelector('div[data-column-type=\'name\']')
         let valueColumn = row.querySelector('div[data-column-type=\'value\']')
         let createdByColumn = row.querySelector('div[data-column-type=\'createdBy\']')
+        let createdAtColumn = row.querySelector('div[data-column-type=\'createdAt\']')
 
         return {
             id: idColumn.innerHTML,
             name: nameColumn.innerHTML,
             value: valueColumn.innerHTML,
-            createdBy: createdByColumn.innerHTML
+            createdBy: createdByColumn.innerHTML,
+            createdAt: createdAtColumn.innerHTML
         }        
     }
 

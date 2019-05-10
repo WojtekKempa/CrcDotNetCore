@@ -56,7 +56,7 @@
                         name: i.name,
                         value: i.value,
                         createdBy: i.createdBy,
-                        createdAt: '2019-04-15T09:11:40.019'
+                        createdAt: i.createdAt
                     })
                 })
             }
