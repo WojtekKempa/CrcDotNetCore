@@ -1,12 +1,10 @@
 ﻿class MeasurementsController {
     _service = null
-    _serviceUrl = ''
     _editedRowInternalId = -1
     _editedRowId = -1
 
     constructor(args) {
-        this._serviceUrl = args.serviceUrl
-        this._service = new MeasurementService('http://localhost:61646/')
+        this._service = new MeasurementService(args.serviceUrl)
         this._newMeasurementPanel = new NewMeasurementPanel()
         this._measurementListPanel = new MeasurementListPanel()
 
